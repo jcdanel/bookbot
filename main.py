@@ -23,6 +23,11 @@ def count_chars(input):
             for entry in letters:
                 if entry == char:
                     letters[entry] += 1
+    
+    sorted_dict = dict(sorted(letters.items(), key=lambda item: item[1], reverse=True))
+
+    for entry in sorted_dict:
+        print(f"the {entry} character was found {letters[entry]} times")
            
          
 
@@ -30,9 +35,11 @@ def main():
     with open("books/frankenstein.txt") as f:
         file_contents = f.read()
 
-    count_chars(file_contents)
 
-    print(letters)
+    print("--- Begin report of books/frankenstein.txt ---")
+    print(f"{count_words(file_contents)} words found in the document\n")
+    count_chars(file_contents)
+    print("--- End report ---")
 
 
 main()
